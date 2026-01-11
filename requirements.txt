@@ -2,3 +2,4 @@ azure-ai-inference
 pydantic
 python-dotenv
 locust
+pytest
