@@ -46,3 +46,20 @@ Production-ready multi-layer defense system for Azure AI Foundry (Phi-4).
 - Security Threats Blocked: 5/5 (100%)
 - Error Recovery: 4/4 scenarios handled
 - False Negatives: 0
+- graph TD
+    A[User Input / Prompt] --> B{Sanitizer}
+    B -- PII Detected --> C[Redact & Log]
+    B -- Clean Data --> D[Governor Agent]
+    
+    D --> E{Risk Check}
+    E -- High Risk --> F[Fallback Governor]
+    E -- Low Risk --> G[Main LLM Agent]
+    
+    F --> H[Safe Response]
+    G --> H
+    
+    H --> I[Audit Logger]
+    I --> J[NIST Compliance Report]
+    
+    K[Red Team / Breach Test] -.->|Attacks| B
+
